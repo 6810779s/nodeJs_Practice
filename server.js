@@ -1,26 +1,18 @@
-const express = require("express");
-const app = express();
+const http = require("http");
+const fs = require("fs");
+const app = http.createServer((request, response) => {
+  const _url = request.url;
+  const fullUrl = new URL("http://localhost:3000" + _url);
+  const pathName = fullUrl.pathname;
 
-//localhost:3000/ 접속시 나올 메시지
-app.get("/", (request, response) => { 
-  response.send(`<h1>코드짜는 문과녀</h1>`);
+  if (pathName === "/") {
+    fs.readdir("./data", (err, files) => {
+      console.log(files);
+    });
+  }
 });
 
-//localhost:3000/main 접속시 나올 메시지
-app.get("/main", (request, response) => {  
-  response.send(`
-    <h1>Hello World</h1>
-    <p>This is main page</p>
-    `);
-});
-
-//localhost:3000/ 혹은 localhost:3000/main 외의
-// get하지 않은 페이지 접속시 나올 메시지.
-app.use((request, response) => {
-  response.send(`<h1>Sorry, page not found :(</h1>`);
-});
-
-//3000포트에서 서버 구동
 app.listen(3000, () => {
-  console.log("localhost:3000 에서 서버가 시작됩니다.");
+  //포트번호 3000으로 서버 구동
+  console.log("서버 시작 주소: http:localhost:3000");
 });
