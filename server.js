@@ -6,8 +6,15 @@ const app = http.createServer((request, response) => {
   const pathName = fullUrl.pathname;
 
   if (pathName === "/") {
+    let list = "";
     fs.readdir("./data", (err, files) => {
-      console.log(files);
+      files.forEach((file) => {
+        list += `<li>${file}</li>`;
+        console.log(file);
+      });
+      console.log("list:", list);
+      response.writeHead(200, { "Content-Type": "text/html;charset = utf-8" });
+      response.end(`<ul>${list}</ul>`);
     });
   }
 });
