@@ -38,7 +38,7 @@ const app = http.createServer((req, res) => {
       let post = qs.parse(body);
       let title = post.title;
       let description = post.description;
-      fs.writeFile(`data/${title}`, description, "utf8", (err) => {
+      fs.writeFile(`data/${title}`, `<p>${description}<p>`, "utf8", (err) => {
         res.writeHead(302, { Location: `/` });
         res.end();
       });
