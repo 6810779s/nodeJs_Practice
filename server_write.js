@@ -19,13 +19,13 @@ const app = http.createServer((req, res) => {
     </head>
     <body>
       <form action="/write_file" method="post">
-      <p>
-        <input autocomplete="off" type="text" name="title" placeholder="타이틀" value="" required>
-      </p>
-      <p>
-        <textarea autocomplete="off" type="text" name="description" placeholder="설명" value="" required></textarea>
-      </p>
-      <p><input type="submit"></p>
+        <p>
+          <input autocomplete="off" type="text" name="title" placeholder="타이틀" value="" required>
+        </p>
+        <p>
+          <textarea autocomplete="off" type="text" name="description" placeholder="설명" value="" required></textarea>
+        </p>
+        <p><input type="submit"></p>
       </form>
     </body>
     </html>`);
